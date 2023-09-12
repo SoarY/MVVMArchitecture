@@ -3,10 +3,8 @@ package com.soar.architecture.base
 import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import com.soar.architecture.vm.LoginViewModel
 import java.lang.reflect.ParameterizedType
 
 /**
@@ -18,7 +16,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
 
     val TAG = javaClass.simpleName
 
-    lateinit var context: Activity
+    lateinit var activity: Activity
 
     protected val binding: V by lazy {
         //使用反射得到viewbinding的class
@@ -35,6 +33,6 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     }
 
     private fun init(){
-        context=this
+        activity=this
     }
 }

@@ -1,5 +1,7 @@
 package com.soar.architecture.activity
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -12,6 +14,7 @@ import com.soar.architecture.data.local.LocalData
 import com.soar.architecture.databinding.ActivityLoginBinding
 import com.soar.architecture.utils.ErrorMapper
 import com.soar.architecture.vm.LoginViewModel
+import java.io.Serializable
 
 class LoginActivity : BaseActivity<ActivityLoginBinding>() {
 
@@ -37,6 +40,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             is Resource.Success -> status.data?.let {
                 binding.loaderView.visibility= View.GONE
                 RecipesListActivity.open(this)
+                finish()
             }
             is Resource.DataError -> {
                 binding.loaderView.visibility= View.GONE
@@ -56,5 +60,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>() {
             binding.username.text.trim().toString(),
             binding.password.text.toString()
         )
+    }
+
+    companion object{
+        fun open(activity: Activity){
+            val intent = Intent(activity,LoginActivity::class.java)
+            activity.startActivity(intent)
+        }
     }
 }

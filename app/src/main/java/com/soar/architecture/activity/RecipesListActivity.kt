@@ -87,7 +87,6 @@ class RecipesListActivity : BaseActivity<ActivityHomeBinding>() {
     }
 
     companion object{
-
         fun open(activity: Activity){
             val intent = Intent(activity,RecipesListActivity::class.java)
             activity.startActivity(intent)
